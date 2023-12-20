@@ -22,6 +22,15 @@ class User:
         self.password = password
 
     def name_validation(self):
+        """
+            Description: name_validation function is used to check entered first name and last name
+                        is valid or not.
+
+            Parameter: Self as a parameter.
+
+            Return:    True or False
+
+        """
         check = re.compile(r'^[A-Z][a-zA-Z]{2,}$')
         if check.match(self.first_name) and check.match(self.last_name):
             return True
@@ -29,6 +38,15 @@ class User:
             return False
 
     def email_validation(self):
+        """
+            Description: email_validation function is used to check entered email
+                        is valid or not.
+
+            Parameter: Self as a parameter.
+
+            Return:    True or False
+
+        """
         check = re.compile(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}$')
         if check.match(self.e_mail):
             return True
@@ -36,6 +54,15 @@ class User:
             return False
 
     def number_validation(self):
+        """
+            Description: number_validation function is used to check entered phone number
+                        is valid or not.
+
+            Parameter: Self as a parameter.
+
+            Return:    True or False
+
+        """
         check = re.compile(r'^(91 [6-9])[0-9]{9}$')
         if check.match(self.num):
             return True
@@ -43,7 +70,16 @@ class User:
             return False
 
     def password_validation(self):
-        check = re.compile(r'(?=.*?[A-Z])(?=[^0-9])[A-Za-z0-9]{8,}$')
+        """
+            Description: password_validation function is used to check entered password is valid or not
+                        is valid or not.
+
+            Parameter: Self as a parameter.
+
+            Return:    True or False
+
+        """
+        check = re.compile(r'^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$')
         if check.match(self.password):
             return True
         else:
