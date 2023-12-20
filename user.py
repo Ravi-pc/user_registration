@@ -14,11 +14,12 @@ import re
 
 
 class User:
-    def __init__(self, first_name, last_name, email, num):
+    def __init__(self, first_name, last_name, email, num, password):
         self.first_name = first_name
         self.last_name = last_name
         self.e_mail = email
         self.num = num
+        self.password = password
 
     def name_validation(self):
         check = re.compile(r'^[A-Z][a-zA-Z]{2,}$')
@@ -28,15 +29,22 @@ class User:
             return False
 
     def email_validation(self):
-        check = re.compile(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b')
+        check = re.compile(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}$')
         if check.match(self.e_mail):
             return True
         else:
             return False
 
     def number_validation(self):
-        check = re.compile(r'^91 \d{10}$')
+        check = re.compile(r'^(91 [6-9])[0-9]{9}$')
         if check.match(self.num):
+            return True
+        else:
+            return False
+
+    def password_validation(self):
+        check = re.compile(r'[A-Za-z0-9]{8,}$')
+        if check.match(self.password):
             return True
         else:
             return False
@@ -47,7 +55,9 @@ if __name__ == '__main__':
     l_name = input('Enter Last Name\n')
     e_mail = input('Enter E-Mail\n')
     ph_no = input('Enter the Mobile Number\n')
-    user_obj = User(f_name, l_name, e_mail, ph_no)
+    passwd = input('Enter the Password\n')
+    user_obj = User(f_name, l_name, e_mail, ph_no, passwd)
     print(user_obj.name_validation())
     print(user_obj.email_validation())
     print(user_obj.number_validation())
+    print(user_obj.password_validation())
