@@ -43,7 +43,7 @@ class User:
             return False
 
     def password_validation(self):
-        check = re.compile(r'[A-Za-z0-9]{8,}$')
+        check = re.compile(r'(?=.*?[A-Z]).*[A-Za-z0-9]{8,}$')
         if check.match(self.password):
             return True
         else:
